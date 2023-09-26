@@ -1,5 +1,8 @@
 {
 	"name": "jest-blog-article",
+	"scripts": {
+		"test": "jest"
+	},
 	"dependencies": {
 		"aws-sdk": "^2.1465.0",
 		"typescript": "^5.2.2"
