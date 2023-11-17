@@ -1,6 +1,7 @@
 export interface Todo {
     id: number
     name: string
+    timeSpent?: number
 }
 
 export interface TodoRepository {
