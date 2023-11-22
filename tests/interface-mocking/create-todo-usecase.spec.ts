@@ -1,5 +1,5 @@
-import {TodoRepositoryMock} from "./todo-repository-mock";
-import {CreateTodoUseCase} from "../../src/todo";
+import {TodoRepositoryMock} from './todo-repository-mock'
+import {CreateTodoUseCase} from '../../src/todo'
 
 describe('CreateTodoUseCase', () => {
     it('should create a todo', async () => {
@@ -8,6 +8,7 @@ describe('CreateTodoUseCase', () => {
         const todo = {
             id: 1,
             name: 'todo',
+            timeSpent: 0,
         }
         const todoUseCase = new CreateTodoUseCase(todoRepositoryMock)
         // act

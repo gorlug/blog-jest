@@ -1,8 +1,8 @@
-import {Todo} from "../../src/todo";
-import {S3Mock} from "./s3-mock";
+import {Todo} from '../../src/todo'
+import {S3Mock} from './s3-mock'
 
 const s3Mock = createS3ClientMock()
-import { AwsTodoRepository } from '../../src/aws-todo-repository'
+import {AwsTodoRepository} from '../../src/aws-todo-repository'
 
 describe('AWS Todo Repository', () => {
     beforeEach(() => {
@@ -13,7 +13,8 @@ describe('AWS Todo Repository', () => {
         // arrange
         const todo: Todo = {
             id: 1,
-            name: 'todo'
+            name: 'todo',
+            timeSpent: 0,
         }
         const repository = new AwsTodoRepository()
         // act
@@ -30,7 +31,8 @@ describe('AWS Todo Repository', () => {
         // arrange
         const todo: Todo = {
             id: 1,
-            name: 'todo'
+            name: 'todo',
+            timeSpent: 0,
         }
         s3Mock.getObjectMock.mockResolvedValue({
             Body: Buffer.from(JSON.stringify(todo))

@@ -1,11 +1,11 @@
 import {mock} from 'jest-mock-extended'
-import {TodoRepository, CreateTodoUseCase, GetTodoUseCase, Todo} from "../src/todo";
+import {TodoRepository, CreateTodoUseCase, GetTodoUseCase, Todo} from '../src/todo'
 
 describe('jest-mock-extended', () => {
     it('should create a todo', async () => {
         // arrange
         const todoRepository = mock<TodoRepository>()
-        const todo = {id: 1, name: 'todo'}
+        const todo = {id: 1, name: 'todo', timeSpent: 0}
         const todoUseCase = new CreateTodoUseCase(todoRepository)
 
         // act
@@ -18,7 +18,7 @@ describe('jest-mock-extended', () => {
     it('should get a todo', async () => {
         // arrange
         const todoRepository = mock<TodoRepository>()
-        const todo = {id: 1, name: 'todo'}
+        const todo = {id: 1, name: 'todo', timeSpent: 0}
         todoRepository.getTodoById.calledWith(1).mockResolvedValue(todo)
 
         const getTodoUseCase = new GetTodoUseCase(todoRepository)
