@@ -19,6 +19,7 @@ describe('GetTimeSpentOnTodoUseCase', () => {
         // assert
         expect(timeSpent).toEqual(30)
         expect(todoRepo.getTodoByIdMock).toHaveBeenCalledWith(1)
+        expect(() => mockFunctionsWithCallsShouldHaveExpect(todoRepo)).not.toThrowError()
     })
 
     it('should call an unexpected method', async () => {
