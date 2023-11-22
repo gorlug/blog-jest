@@ -8,6 +8,6 @@ export class GetTimeSpentOnTodoUnexpectedUsecase {
         const todo = await this.todoRepository.getTodoById(id)
         todo.name = 'changed name'
         await this.todoRepository.saveTodo(todo)
-        return todo.timeSpent!
+        return todo.timeSpent
     }
 }

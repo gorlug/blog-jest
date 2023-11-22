@@ -6,6 +6,6 @@ export class GetTimeSpentOnTodoUsecase {
 
     async getTimeSpent(id: number): Promise<number> {
         const todo = await this.todoRepository.getTodoById(id)
-        return todo.timeSpent!
+        return todo.timeSpent
     }
 }
