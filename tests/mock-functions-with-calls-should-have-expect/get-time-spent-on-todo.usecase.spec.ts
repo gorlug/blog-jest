@@ -1,9 +1,9 @@
-import {TodoRepositoryMock} from '../interface-mocking/todo-repository-mock'
 import {Todo} from '../../src/todo'
 import {GetTimeSpentOnTodoUsecase} from './usecases/get-time-spent-on-todo.usecase'
 import {GetTimeSpentOnTodoUnexpectedUsecase} from './usecases/get-time-spent-on-todo-unexpected.usecase'
-import {mockFunctionsWithCallsShouldHaveExpect} from './mock-functions-with-calls-should-have-expect'
-import {expect} from './mock-functions-with-calls-should-have-expect'
+import {mocksWithExpectShouldHaveBeenCalled} from './mocks-with-expect-should-have-been-called'
+import {expectMock} from './mocks-with-expect-should-have-been-called'
+import {TodoRepositoryMock} from './todo-repository-mock'
 
 describe('GetTimeSpentOnTodoUseCase', () => {
 
@@ -18,8 +18,8 @@ describe('GetTimeSpentOnTodoUseCase', () => {
 
         // assert
         expect(timeSpent).toEqual(30)
-        expect(todoRepo.getTodoByIdMock).toHaveBeenCalledWith(1)
-        expect(() => mockFunctionsWithCallsShouldHaveExpect(todoRepo)).not.toThrowError()
+        expectMock(todoRepo.getTodoByIdMock).toHaveBeenCalledWith(1)
+        expect(() => mocksWithExpectShouldHaveBeenCalled(todoRepo.getMockFunctions())).not.toThrowError()
     })
 
     it('should call an unexpected method', async () => {
@@ -33,8 +33,9 @@ describe('GetTimeSpentOnTodoUseCase', () => {
 
         // assert
         expect(timeSpent).toEqual(30)
-        expect(todoRepo.getTodoByIdMock).toHaveBeenCalledWith(1)
-        expect(() => mockFunctionsWithCallsShouldHaveExpect(todoRepo)).toThrowError('Mock function saveTodoMock has no expect')
+        expectMock(todoRepo.getTodoByIdMock).toHaveBeenCalledWith(1)
+        expect(() => mocksWithExpectShouldHaveBeenCalled(todoRepo.getMockFunctions()))
+            .toThrowError('Mock function saveTodoMock has no expect')
     })
 })
 
