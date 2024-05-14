@@ -26,4 +26,14 @@ describe('expect the mock to have been called', () => {
         expect(mock).toHaveBeenCalledWith('abc')
         expect(mock).toHaveBeenCalledWith('def')
     })
+
+    it('should be called with different values in specified order', () => {
+        const mock = jest.fn()
+
+        mock('abc')
+        mock('def')
+
+        expect(mock).toHaveBeenNthCalledWith(1, 'abc')
+        expect(mock).toHaveBeenNthCalledWith(2, 'def')
+    })
 })
